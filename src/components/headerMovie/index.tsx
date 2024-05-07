@@ -6,6 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
 import { MovieT } from "../../types/interfaces"; 
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const styles = {
     root: {  
@@ -17,7 +18,11 @@ const styles = {
   },
 };
 
-const MovieHeader: React.FC<MovieT> = (props) => {
+interface MovieHeaderProps extends MovieT {
+  isFavorite: boolean; // New prop for favorite status
+}
+
+const MovieHeader: React.FC<MovieHeaderProps> = ({ title, homepage, tagline, isFavorite }) => {
   
   return (
     <Paper component="div" sx={styles.root}>
@@ -26,13 +31,15 @@ const MovieHeader: React.FC<MovieT> = (props) => {
       </IconButton>
 
       <Typography variant="h4" component="h3">
-        {props.title}{"   "}
-        <a href={props.homepage}>
-          <HomeIcon color="primary"  fontSize="large"/>
+        {title}{"   "}
+        <a href={homepage}>
+          <HomeIcon color="primary" fontSize="large" />
         </a>
         <br />
-        <span>{`${props.tagline}`} </span>
+        <span>{`${tagline}`} </span>
+        {isFavorite && <FavoriteIcon color="error" />} 
       </Typography>
+
       <IconButton aria-label="go forward">
         <ArrowForwardIcon color="primary" fontSize="large" />
       </IconButton>

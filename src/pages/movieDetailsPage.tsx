@@ -18,7 +18,6 @@ const styles = {
     width: "100%",
     height: "auto",
   },
-
 };
 
 interface MoviePageProps {
@@ -30,6 +29,7 @@ const MoviePage: React.FC = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState<MovieT>();
   const [images, setImages] = useState<MovieImage[]>([]);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     getMovie(id ?? "").then((movie) => {
@@ -48,7 +48,7 @@ const MoviePage: React.FC = () => {
     <>
       {movie ? (
         <>
-          <MovieHeader {...movie} />
+          <MovieHeader {...movie} isFavorite={isFavorite} /> 
           <Grid container spacing={5} style={{ padding: "15px" }}>
             <Grid item xs={3}>
               <div >
