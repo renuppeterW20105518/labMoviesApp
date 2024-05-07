@@ -25,6 +25,7 @@ export interface BaseMovie {
     genres: {
       id: number;
       name: string;
+      isFavorite: boolean
     }[];
     
     production_countries: {
@@ -53,4 +54,10 @@ export interface BaseMovie {
     movies: ListedMovie[];
     title: string;
     selectFavourite: (m: number) => void;
+  }
+
+  export interface Review{
+    id: string;
+    content: string
+    author: string
   }
