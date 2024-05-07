@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";  // Changed
-import Header from "../components/headerMovieList";
-import FilterCard from "../components/filterMoviesCard";
+import React, { useState, useEffect, FC } from "react";
+import Header from "../../components/headerMovieList";
+import FilterCard from "../../components/filterMoviesCard";
 import Grid from "@mui/material/Grid";
-import MovieList from "../components/movieList";
+import MovieList from "../../components/movieList";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
-import { FilterOption, ListedMovie} from "../types";
-
+import { FilterOption, ListedMovie} from "../../types";
  
 const styles = {
   root: {
@@ -19,7 +18,7 @@ const styles = {
   },
 };
 
-  const MovieListPage: React.FC= () => {
+  const MovieListPage: FC= () => {
     const [movies, setMovies] = useState([]);
     const [titleFilter, setTitleFilter] = useState("");
     const [genreFilter, setGenreFilter] = useState("0");
@@ -38,6 +37,13 @@ const styles = {
     const handleChange = (type: FilterOption, value: string) => {
       if (type === "title") setTitleFilter(value);
       else setGenreFilter(value);
+    };
+
+    const addToFavourites = (movieId: number) => {
+      const updatedMovies = movies.map((m: ListedMovie) =>
+        m.id === movieId ? { ...m, favourite: true } : m
+      );
+      setMovies(updatedMovies);
     };
 
     useEffect(() => {
@@ -62,7 +68,7 @@ const styles = {
           <Header title={"Home Page"} />
         </Grid>
         <Grid item container spacing={5}>
-          <MovieList movies={displayedMovies}></MovieList>
+          <MovieList movies={displayedMovies} selectFavourite={addToFavourites} />
         </Grid>
       </Grid>
       <Fab
