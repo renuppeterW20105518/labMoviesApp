@@ -55,12 +55,6 @@ export interface BaseMovie {
     title: string;
     action: (m: ListedMovie) => React.ReactNode;
   }
-
-  // export interface Review{
-  //   id: string;
-  //   content: string
-  //   author: string
-  // }
   
   export interface Review {
     author: string,
