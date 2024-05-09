@@ -53,7 +53,7 @@ export interface BaseMovie {
   export interface MovieListPageTemplateProps {
     movies: ListedMovie[];
     title: string;
-    selectFavourite: (m: number) => void;
+    action: (m: ListedMovie) => React.ReactNode;
   }
 
   export interface Review{

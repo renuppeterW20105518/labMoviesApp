@@ -11,9 +11,8 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import Grid from "@mui/material/Grid";
-import IconButton from "@mui/material/IconButton";
-import img from '../../images/film-poster-placeholder.png';
-import { BaseMovie } from "../../types/interfaces"; 
+import img from "../../images/film-poster-placeholder.png";
+import { BaseMovie } from "../../types/interfaces";
 import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
@@ -27,22 +26,16 @@ import { ListedMovie } from "../../types/interfaces";
 //   },
 // };
 
-// interface MovieCardProps extends BaseMovie {
-//   selectFavourite: (movieId: number) => void;
-// }
+interface MovieListProps {
+  movie: ListedMovie;
+  action: (m: ListedMovie) => React.ReactNode;
+}
 
-const MovieCard: React.FC<ListedMovie> = (props) => {
-
-  const movie = {...props, favourite: false};
+const MovieCard: React.FC<MovieListProps> = (props) => {
+  const movie = { ...props.movie, favourite: false };
   const { favourites, addToFavourites } = useContext(MoviesContext);
 
-  if (favourites.find((id) => id === movie.id)) 
-    movie.favourite = true;
-
-  const handleAddToFavourite = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    addToFavourites(movie);
-  };
+  if (favourites.find((id) => id === movie.id)) movie.favourite = true;
 
   return (
     <Card>
@@ -84,17 +77,15 @@ const MovieCard: React.FC<ListedMovie> = (props) => {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" onClick={handleAddToFavourite}>
-          <FavoriteIcon color="primary" fontSize="large" />
-        </IconButton>
+        {props.action(movie)}
         <Link to={`/movies/${movie.id}`}>
-        <Button variant="outlined" size="medium" color="primary">
-          More Info ...
-        </Button>
+          <Button variant="outlined" size="medium" color="primary">
+            More Info ...
+          </Button>
         </Link>
       </CardActions>
     </Card>
   );
-}
+};
 
 export default MovieCard;
