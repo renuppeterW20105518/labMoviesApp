@@ -77,3 +77,4 @@ export interface BaseMovie {
     total_results: number;
     results: BaseMovie[];
   }
+  

@@ -18,13 +18,13 @@ import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
 import { ListedMovie } from "../../types/interfaces";
 
-// const styles = {
-//   card: { maxWidth: 345 },
-//   media: { height: 500 },
-//   avatar: {
-//     backgroundColor: "rgb(255, 0, 0)",
-//   },
-// };
+const styles = {
+  card: { maxWidth: 345 },
+  media: { height: 500 },
+  avatar: {
+    backgroundColor: "rgb(255, 0, 0)",
+  },
+};
 
 interface MovieListProps {
   movie: ListedMovie;
@@ -38,11 +38,11 @@ const MovieCard: React.FC<MovieListProps> = (props) => {
   if (favourites.find((id) => id === movie.id)) movie.favourite = true;
 
   return (
-    <Card>
+    <Card sx={styles.card}>
       <CardHeader
         avatar={
           movie.favourite ? (
-            <Avatar>
+            <Avatar sx={styles.avatar}>
               <FavoriteIcon />
             </Avatar>
           ) : null
