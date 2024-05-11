@@ -53,11 +53,28 @@ export interface BaseMovie {
   export interface MovieListPageTemplateProps {
     movies: ListedMovie[];
     title: string;
-    selectFavourite: (m: number) => void;
+    action: (m: ListedMovie) => React.ReactNode;
+  }
+  
+  export interface Review {
+    author: string,
+    content: string,
+    agree: boolean,
+    rating: number,
+    movieId: number,
   }
 
-  export interface Review{
-    id: string;
-    content: string
-    author: string
+  export interface GenreData {
+    genres: {
+      id: string;
+      name: string
+    }[];
   }
+
+  interface DiscoverMovies {
+    page: number;	
+    total_pages: number;
+    total_results: number;
+    results: BaseMovie[];
+  }
+  
