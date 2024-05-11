@@ -35,7 +35,8 @@ const MovieCard: React.FC<MovieListProps> = (props) => {
   const movie = { ...props.movie, favourite: false };
   const { favourites, addToFavourites } = useContext(MoviesContext);
 
-  if (favourites.find((id) => id === movie.id)) movie.favourite = true;
+  if (favourites.find((id) => id === movie.id)) movie.favourite = true;  
+  
 
   return (
     <Card sx={styles.card}>
@@ -54,6 +55,7 @@ const MovieCard: React.FC<MovieListProps> = (props) => {
         }
       />
       <CardMedia
+      sx={styles.media}
         image={
           movie.poster_path
             ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`

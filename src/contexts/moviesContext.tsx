@@ -5,14 +5,14 @@ interface MovieContextInterface {
     favourites: number[];
     addToFavourites: ((movie: ListedMovie) => void);
     removeFromFavourites: ((movie: ListedMovie) => void);
-    addReview: ((movie: MovieT, review: Review) => void);  // NEW
+    addReview: ((movie: MovieT, review: Review) => void);  
 }
 
 const initialContextState: MovieContextInterface = {
     favourites: [],
     addToFavourites: (movie) => {movie.id },
     removeFromFavourites: (movie) => { movie.id},
-    addReview: (movie, review) => { movie.id, review},  // NEW
+    addReview: (movie, review) => { movie.id, review},  
 };
 
 
