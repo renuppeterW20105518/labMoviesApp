@@ -1,5 +1,4 @@
-//import React, {MouseEvent} from "react";
-import React, { useContext, MouseEvent } from "react";
+import React, { useContext } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -32,7 +31,7 @@ interface TVListProps {
 
 const TVCard: React.FC<TVListProps> = (props) => {
   const serie = { ...props.serie, favourite: false };
-  const { favourites, addToFavourites } = useContext(TVsContext);
+  const { favourites } = useContext(TVsContext);
 
   if (favourites.find((id) => id === serie.id)) serie.favourite = true;  
   

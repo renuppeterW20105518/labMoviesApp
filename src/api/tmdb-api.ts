@@ -104,7 +104,7 @@ export const getUpcoming = () => {
 
 export const getActors = () => {
   return fetch(
-    `https://api.themoviedb.org/3/person/popular?api_key=${
+    `https://api.themoviedb.org/3/trending/person/day?api_key=${
       import.meta.env.VITE_TMDB_KEY
     }&language=en-US&page=3`
   )

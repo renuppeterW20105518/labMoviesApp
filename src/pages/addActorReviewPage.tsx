@@ -7,7 +7,7 @@ import { getActor } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
 import { ActorT } from "../types/interfaces";
 
-const WriteReviewPage: React.FC = (props) => {
+const WriteReviewPage: React.FC = () => {
     const location = useLocation()
     const { actorId } = location.state;
     const { data: actor, error, isLoading, isError } = useQuery<ActorT, Error>(

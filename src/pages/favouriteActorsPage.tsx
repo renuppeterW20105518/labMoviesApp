@@ -4,7 +4,7 @@ import { ActorsContext } from "../contexts/actorsContext";
 import { useQueries } from "react-query";
 import { getActor } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
-import useActorFiltering from "../hooks/useActorFiltering";
+import useFiltering from "../hooks/useFiltering";
 import ActorFilterUI, { titleFilter } from "../components/actorFilterUI";
 import { ActorT } from "../types/interfaces";
 import RemoveFromFavourites from "../components/actorCardIcons/removeFromFavourites";
@@ -28,7 +28,7 @@ export const genreFiltering = {
 
 const FavouriteActorsPage: React.FC = () => {
   const { favourites: actorIds } = useContext(ActorsContext);
-  const { filterValues, setFilterValues, filterFunction } = useActorFiltering(
+  const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [titleFiltering, genreFiltering]
   );

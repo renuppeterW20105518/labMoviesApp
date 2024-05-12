@@ -236,12 +236,6 @@ export interface TVListPageTemplateProps {
   action: (m: ListedTV) => React.ReactNode;
 }
 
-// export interface TVListPageTemplateProps {
-//   series: ListedTV[];
-//   action: (serie: ListedTV) => React.ReactNode;
-// }
-
-
 export interface ReviewTV {
   author: string;
   content: string;

@@ -18,8 +18,7 @@ const TVListPageTemplate: React.FC<TVListPageTemplateProps> = (props)=> {
       </Grid>
       <Grid item container spacing={5}>
         <TVList
-          action={props.action}
-          series={props.series}
+          action={props.action} series={props.series}
         ></TVList>
       </Grid>
     </Grid>
