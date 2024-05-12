@@ -7,9 +7,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
-import { getMovieReviews } from "../../api/tmdb-api";
+import { getTVReviews } from "../../api/tmdb-api";
 import { excerpt } from "../../util";
-import { MovieT, Review } from "../../types/interfaces"; 
+import { TVT, ReviewTV } from "../../types/interfaces"; 
 
 const styles = {
     table: {
@@ -17,12 +17,12 @@ const styles = {
     },
 };
 
-const MovieReviews: React.FC<MovieT> = (props) => { 
+const TVReviews: React.FC<TVT> = (props) => { 
     const [reviews, setReviews] = useState([]);
 
-    const movie = props;
+    const serie = props;
     useEffect(() => {
-        getMovieReviews(movie.id).then((reviews) => {
+        getTVReviews(serie.id).then((reviews) => {
             setReviews(reviews);
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -39,18 +39,18 @@ const MovieReviews: React.FC<MovieT> = (props) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {reviews.map((r: Review) => (
-                        <TableRow key={r.movieId}>
+                    {reviews.map((r: ReviewTV) => (
+                        <TableRow key={r.serieId}>
                             <TableCell component="th" scope="row">
                                 {r.author}
                             </TableCell>
                             <TableCell >{excerpt(r.content)}</TableCell>
                             <TableCell >
                                 <Link
-                                    to={`/reviews/${r.movieId}`}
+                                    to={`/reviews/${r.serieId}`}
                                     state={{
                                         review: r,
-                                        movie: movie,
+                                        serie: serie,
                                     }}
                                 >
                                     Full Review
@@ -64,4 +64,4 @@ const MovieReviews: React.FC<MovieT> = (props) => {
     );
 }
 
-export default MovieReviews;
+export default TVReviews;
