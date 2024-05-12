@@ -1,7 +1,7 @@
 import React from "react";
 import PageTemplate from "../../components/templateTVListPage";
 import { getTVSeries } from "../../api/tmdb-api";
-import useTVFiltering from "../../hooks/useTVFiltering";
+import useFiltering from "../../hooks/useFiltering";
 import TVFilterUI, { titleFilter, genreFilter, } from "../../components/tvFilterUI";
 import { DiscoverTVSeries, ListedTV } from "../../types/interfaces";
 import { useQuery } from "react-query";
@@ -24,7 +24,7 @@ const TVPage: React.FC = () => {
     "discover",
     getTVSeries
   );
-  const { filterValues, setFilterValues, filterFunction } = useTVFiltering(
+  const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [titleFiltering, genreFiltering]
   );

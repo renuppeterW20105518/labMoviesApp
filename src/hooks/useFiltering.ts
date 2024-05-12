@@ -12,6 +12,7 @@ const useFiltering = (data: any[], filters: Filter[]) => {
       name: f.name,
       value: f.value,
     }));
+    console.log(data)
     return filterInitialValues;
   });
 

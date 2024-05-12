@@ -1,7 +1,7 @@
 import React from "react";
 import PageTemplate from "../components/templateActorListPage";
 import { getActors } from "../api/tmdb-api";
-import useActorFiltering from "../hooks/useActorFiltering";
+import useFiltering from "../hooks/useFiltering";
 import ActorFilterUI, { titleFilter,genreFilter,} from "../components/actorFilterUI";
 import { DiscoverActors, ListedActor } from "../types/interfaces";
 import { useQuery } from "react-query";
@@ -21,7 +21,7 @@ const genreFiltering = {
 
 const ActorPage: React.FC = () => {
   const { data, error, isLoading, isError } = useQuery<DiscoverActors, Error>("popular", getActors);
-  const { filterValues, setFilterValues, filterFunction } = useActorFiltering(
+  const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [titleFiltering, genreFiltering]
   );
