@@ -5,6 +5,8 @@ import Drawer from "@mui/material/Drawer";
 import { ListedTV } from "../../types/interfaces";
 
 export const titleFilter = function (serie: ListedTV, value: string) {
+  console.log("Serie name:", serie.name);
+  console.log("Value:", value);
   return serie.name.toLowerCase().search(value.toLowerCase()) !== -1;
 };
 

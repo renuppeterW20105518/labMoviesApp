@@ -19,7 +19,7 @@ const genreFiltering = {
   condition: genreFilter,
 };
 
-const TVPage: React.FC = () => {
+const UpcomingTVPage: React.FC = () => {
   const { data, error, isLoading, isError } = useQuery<DiscoverTVSeries, Error>("discover", getTVSeries);
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
@@ -49,7 +49,7 @@ const TVPage: React.FC = () => {
   return (
     <>
       <PageTemplate
-        name="Discover TV Series"
+        name="Upcoming TV Series"
         series={displayedTVSeries}
         action={(serie: ListedTV) => {
           return <AddToFavouritesIcon {...serie} />;
@@ -64,4 +64,4 @@ const TVPage: React.FC = () => {
     </>
   );
 };
-export default TVPage;
+export default UpcomingTVPage;
